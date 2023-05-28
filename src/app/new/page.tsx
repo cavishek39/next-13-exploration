@@ -1,6 +1,6 @@
 import { prisma } from '@/dev'
 import Link from 'next/link'
-import { redirect } from 'next/navigation'
+import { NextResponse } from 'next/server'
 
 /** createNewTodo is a server-side function that can be called from the
  * client side using the action attribute on a form element.
@@ -22,14 +22,8 @@ async function createNewTodo(data: FormData) {
   })
 
   if (!!newTodo?.id) {
-    redirect('/')
+    NextResponse.redirect('/')
   }
-}
-
-function onGoBack() {
-  'use client'
-
-  redirect('/')
 }
 
 export default function Page() {
